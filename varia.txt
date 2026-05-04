@@ -1,0 +1,13 @@
+# set line number
+echo "set number" >> ~/.vimrc
+
+# add pwd
+echo $SHELL
+
+nano ~/.bashrc
+PS1='\w $ '
+source ~/.bashrc
+
+nano ~/.zshrc
+PROMPT='%~ $ '
+source ~/.zshrc
