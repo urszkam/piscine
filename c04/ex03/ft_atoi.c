@@ -38,8 +38,11 @@ int	ft_atoi(char *str)
 }
 
 #include <stdio.h>
-int main()
+int main(int argc, char **argv)
 {
-	int num = ft_atoi("   \t\v +--+--ai24632er23w");
-	printf("%d", num);
+	if (argc > 1)
+	{
+		int num = ft_atoi(argv[1]);
+		printf("%d", num);
+	}
 }
