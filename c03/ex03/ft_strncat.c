@@ -1,27 +1,27 @@
-unsigned int    ft_strlen(char *str)
+unsigned int	ft_strlen(char *str)
 {
-    unsigned int    i;
+	unsigned int	i;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-char *ft_strncat(char *dest, char *src, unsigned int nb)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-    unsigned int    len;
-    unsigned int    i;
-    
-    len = ft_strlen(dest);
-    i = 0;
-    while (i < nb && src[i])
-    {
-        dest[len + i] = src[i];
-        i++;
-    }
-    dest[len + i] = '\0';
-    return (dest);
+	unsigned int	len;
+	unsigned int	i;
+
+	len = ft_strlen(dest);
+	i = 0;
+	while (i < nb && src[i])
+	{
+		dest[len + i] = src[i];
+		i++;
+	}
+	dest[len + i] = '\0';
+	return (dest);
 }
 
 #include <string.h>
