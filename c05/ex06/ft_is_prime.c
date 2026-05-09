@@ -9,7 +9,7 @@ int	ft_is_prime(int nb)
 	if (nb % 2 == 0)
 		return (0);
 	div = 3;
-	while (div < nb)
+	while (div <= nb / div)
 	{
 		if (nb % div == 0)
 			return (0);
