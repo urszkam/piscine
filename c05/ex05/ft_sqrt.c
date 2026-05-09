@@ -5,7 +5,7 @@ int	ft_sqrt(int nb)
 	if (nb < 1)
 		return (0);
 	sqrt = 1;
-	while (sqrt * sqrt < nb)
+	while (sqrt <= 46340 && sqrt * sqrt < nb)
 		sqrt++;
 	if (sqrt * sqrt == nb)
 		return (sqrt);
