@@ -82,14 +82,17 @@ char	**ft_split(char *str, char *charset)
 			word_len++;
 		if (word_len > 0)
 		{
-			arr[i++] = _ft_strndup(str, word_len);
+			arr[i] = _ft_strndup(str, word_len);
+			if (!arr[i])
+				return (NULL);
+			i++;
 			str += word_len;
 		}
 	}
 	arr[i] = NULL;
 	return (arr);
 }
-
+/*
 int	main(int argc, char **argv)
 {
 	char	**result;
@@ -109,3 +112,4 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
+*/

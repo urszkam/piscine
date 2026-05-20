@@ -29,10 +29,11 @@ char	*ft_strdup(char *src)
 	dst[i] = 0;
 	return (dst);
 }
-
+/*
 #include <stdio.h>
 int main()
 {
 	printf("%s\n", ft_strdup("hello world"));
 	return (0);
 }
+*/

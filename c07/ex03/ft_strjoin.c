@@ -33,6 +33,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		j;
 	int		k;
 
+	if (size <= 0)
+		size = 0;
 	dst = (char *)malloc(sizeof(char) * (_tot_size(size, strs, sep) + 1));
 	if (!dst)
 		return (NULL);

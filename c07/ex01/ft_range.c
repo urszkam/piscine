@@ -15,7 +15,7 @@ int	*ft_range(int min, int max)
 		arr[size] = --max;
 	return (arr);
 }
-
+/*
 #include <stdio.h>
 int main()
 {
@@ -25,3 +25,4 @@ int main()
 	for (int i = 0; min < max; min++, i++)
 		printf("%d\n", arr[i]);
 }
+*/

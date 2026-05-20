@@ -19,7 +19,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 		(*range)[i++] = min++;
 	return (size);
 }
-
+/*
 #include <stdio.h>
 int main()
 {
@@ -30,4 +30,4 @@ int main()
         for (int i = 0; min < max; min++, i++)
                 printf("%d\n", arr[i]);
 }
-
+*/

@@ -1,63 +1,12 @@
-#include <unistd.h>
+#include <stdlib.h>
 
-int     ft_isspace(char c)
-{
-        return ((c >= 9 && c <= 13) || c == ' ');
-}
+int	ft_strlen(char *str);
+int	ft_isspace(char c);
+int	check_base(char *base);
+int	isbase(char c, char *base);
+int	get_idx(char c, char *base);
 
-int	check_base(char *base, int *size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	*size = 0;
-	while (base[*size])
-                (*size)++;
-	if (*size < 2)
-		return (0);
-	while (base[i])
-	{
-		if (base[i] == '-' || base[i] == '+' || ft_isspace(base[i]))
-			return (0);
-		j = i + 1;
-		while (base[j])
-		{
-			if (base[i] == base[j])
-				return (0);
-			j++;
-		}
-		i++;	
-	}
-	return (1);
-}
-
-int	isbase(char c, char *base)
-{
-	while (*base)
-	{
-		if (*base == c)
-			return (1);
-		base++;
-	}
-	return (0);
-}
-
-int	get_idx(char c, char *base)
-{
-	int	i;
-
-	i = 0;
-	while (base[i])
-	{
-		if (c == base[i])
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int	ft_atoi_base(char *str, char *base)
+long	ft_atoi_base(char *str, char *base)
 {
 	int		size;
 	int		sign;
@@ -65,40 +14,77 @@ int	ft_atoi_base(char *str, char *base)
 
 	num = 0;
 	sign = 1;
-	if (check_base(base, &size))
+	size = ft_strlen(base);
+	while (ft_isspace(*str))
+		str++;
+	while (*str == '-' || *str == '+')
 	{
-		while (ft_isspace(*str))
-			str++;
-		while (*str == '-' || *str == '+')
-		{
-			if (*str == '-')
-				sign *= -1;
-			str++;
-		}
-		while (*str && isbase(*str, base))
-		{
-			num = num * size + get_idx(*str, base);
-			str++;
-		}
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	return ((int) (num * sign));
+	while (*str && isbase(*str, base))
+	{
+		num = num * size + get_idx(*str, base);
+		str++;
+	}
+	return ((long)(num * sign));
+}
+
+int	ft_get_size(long nbr, int base_size)
+{
+	int		size;
+
+	size = 0;
+	if (nbr < 0)
+		size++;
+	if (nbr == 0)
+		return (1);
+	while (nbr)
+	{
+		nbr /= base_size;
+		size++;
+	}
+	return (size);
+}
+
+char	*ft_putnbr_to_str(long nbr, char *base, int base_size, int len)
+{
+	char	*dst;
+
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dst)
+		return (NULL);
+	dst[len] = 0;
+	if (nbr < 0)
+	{
+		dst[0] = '-';
+		nbr = -nbr;
+	}
+	if (nbr == 0)
+		dst[0] = base[0];
+	while (nbr)
+	{
+		dst[--len] = base[nbr % base_size];
+		nbr /= base_size;
+	}
+	return (dst);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int		size_to;
-	int		decimal;
-	char	*dst;
+	int			size_to;
+	int			str_len;
+	long		decimal;
 
+	if (!check_base(base_to) || !check_base(base_from))
+		return (NULL);
+	size_to = ft_strlen(base_to);
 	decimal = ft_atoi_base(nbr, base_from);
-	if (check_base(base_to, &size_to))
-	{
-		
-
-	}
-	return((int)(num * sign))
+	str_len = ft_get_size(decimal, size_to);
+	return (ft_putnbr_to_str(decimal, base_to, size_to, str_len));
 }
-i
+/*
 #include <stdio.h>
 int main(int argc, char **argv)
 {
@@ -108,4 +94,4 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
-
+*/
