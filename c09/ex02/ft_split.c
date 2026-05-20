@@ -89,7 +89,7 @@ char	**ft_split(char *str, char *charset)
 	arr[i] = NULL;
 	return (arr);
 }
-
+/*
 int	main(int argc, char **argv)
 {
 	char	**result;
@@ -109,3 +109,4 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
+*/
