@@ -82,10 +82,7 @@ char	**ft_split(char *str, char *charset)
 			word_len++;
 		if (word_len > 0)
 		{
-			arr[i] = _ft_strndup(str, word_len);
-			if (!arr[i])
-				return (NULL);
-			i++;
+			arr[i++] = _ft_strndup(str, word_len);
 			str += word_len;
 		}
 	}
